@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Whirlwind intro to React Class Components
 
-## Available Scripts
+- [X] "Renderables" === "Components"
+    - Interface example: Car
+        - door
+        - seat
+        - break
+        - key to start car
+        - put in drive
+        - drive to front yard
+    - Interface: Renderable
+        - can be initialized
+        - can be drawn to the screen
+        - can receive new data
+        - can be torn down
+        - can be garbage collected
+- [X] Classes + components
+    - [X] Three steps to convert a function component to a class component:
+        1. Change the word `function` to `render`
+        1. Wrap the `render()` in a `class <name of component> extends React.Component {}`
+        1. There is no step 3!
+    - [X] Wait, what is a component?
+        - A component returns... JSX
+            - And JSX is?
+                - stuff that looks like HTML, but isn't
+                - it is a call to `React.createElement()`
+            - So that means it's a thing that returns a *React Element*
+        - OK, what is a React Element?
+            - It's a Plain JS Obj description of a DOM element
+            - These two are equivalent:
+            - ```
+                <div className="App>
+                    <h1>Hello!</h1>
+                </div>
+            ```
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+            - ```            
+            {
+                type: 'div',
+                {
+                    className: 'App
+                },
+                [
+                    {
+                        type: 'h1',
+                        null,
+                        [
+                            'Hello!'
+                        ]
+                    }
+                ]
+            }
+            ```
+        - Why have React Elements if they're just descriptions of DOM elements??
+            - So it can produce a Virtual DOM
+                1. You give it a description of what to draw
+                1. It sees if your description is different from what it already drew
+                1. It only makes the minimum necessary changes to the real DOM
+- [X] What's the equivalent to `useState` in Classes?
+    1. Define `this.state` as an object in the `constructor()`
+    1. Define a "helper function" (either an arrow function property or a regular method that you `.bind()` in the `constructor()`)
+    1. And then 
+        a. Pass that "slice" of state to any child that needs the slice of state
+        a. Pass a reference to the helper function to any child that needs to update the slice of state
