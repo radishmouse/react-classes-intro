@@ -34,21 +34,21 @@
                 </div>
             ```
             - ```            
-            {
-                type: 'div',
                 {
-                    className: 'App
-                },
-                [
+                    type: 'div',
                     {
-                        type: 'h1',
-                        null,
-                        [
-                            'Hello!'
-                        ]
-                    }
-                ]
-            }
+                        className: 'App
+                    },
+                    [
+                        {
+                            type: 'h1',
+                            null,
+                            [
+                                'Hello!'
+                            ]
+                        }
+                    ]
+                }
             ```
         - Why have React Elements if they're just descriptions of DOM elements??
             - So it can produce a Virtual DOM
